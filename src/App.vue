@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header />
-    <Tasks v-bind:tasks="tasks" />
+    <Tasks @del-task="deleteTask" v-bind:tasks="tasks" />
   </div>
 </template>
 
@@ -41,6 +41,11 @@ export default {
         reminder: false,
       }
     ]
+  },
+  methods: {
+    deleteTask(id) {
+      this.tasks = this.tasks.filter(task => task.id !== id);
+    }
   }
 }
 </script>
