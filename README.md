@@ -2,6 +2,8 @@
 ```
 A simple task tracker application implemented with VueJS
 ```
+## App url
+[Task Tracker - VueJS](https://vue-task-tracker.herokuapp.com/)
 
 
 ## Project setup
