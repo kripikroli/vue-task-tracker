@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header />
-    <Tasks @del-task="deleteTask" v-bind:tasks="tasks" />
+    <Tasks @toggle-reminder="toggleReminder" @del-task="deleteTask" v-bind:tasks="tasks" />
   </div>
 </template>
 
@@ -44,9 +44,14 @@ export default {
   },
   methods: {
     deleteTask(id) {
-      this.tasks = this.tasks.filter(task => task.id !== id);
+      if (confirm('Are you sure?')) {
+        this.tasks = this.tasks.filter(task => task.id !== id);
+      }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map(task => task.id === id ? {...task, reminder: !task.reminder} : task);
     }
-  }
+  },
 }
 </script>
 
